@@ -1,0 +1,56 @@
+.contenedor {
+  text-align: center;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 15vh;
+}
+
+.text {
+  text-align: center;
+}
+
+table th {
+  width: auto !important;
+}
+
+table {
+  width: 80%;
+  position: relative;
+  left: 10%;
+}
+
+th {
+  padding: 0px 0px 0px 50px;
+  width: 100%;
+  position: relative;
+  left: -50px;
+}
+
+p {
+  position: relative;
+  left: 45%;
+}
+
+tr {
+  padding: 0px 0px 0px 50px;
+  width: 100%;
+  position: relative;
+  left: 50px;
+}
+
+.tr {
+  width: 100%;
+  position: relative;
+  left: 100%;
+}
+
+.tr .td {
+  padding: 0px 0px 0px 50px;
+  width: 100%;
+  position: relative;
+  left: 100%;
+}

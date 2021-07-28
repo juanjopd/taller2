@@ -1,0 +1,83 @@
+<div class="contenedor">
+    <div class="row">
+        <div class="col-sm-3">
+            <label for="nombre">Nombre del cliente</label>
+            <input type="text" class="form-control" placeholder="nombre del cliente" [(ngModel)]="cliente">
+        </div>
+        <div class="col-sm-3">
+            <label for="fecha">Fecha</label>
+            <input type="date" class="form-control" [(ngModel)]="fecha">
+        </div>
+    </div>
+    <input type="button" value="Agregar factura" class="btn btn-dark" (click)="agregarFactura()">
+</div>
+<br>
+<br>
+<table mdbTable>
+    <thead>
+        <tr>
+            <th *ngFor="let head of headElements" scope="col">{{head}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let factura of facturas">
+            <th scope=" row">{{factura.id}}</th>
+            <td>{{factura.cliente}}</td>
+            <td>{{factura.fecha}}</td>
+            <td><button class="btn btn-primary" (click)="triggerModal(modalData2)">Ver items</button>
+                <!--(click)="triggerModal(modalData)" -->
+                <ng-template #modalData2 let-modal>
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modal-basic-title">Ver items a la Factura N°{{factura.id}}
+                        </h4>
+                        <button type="button" class="close btn btn-danger" aria-label="Close"
+                            (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true">X</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container" style="margin-top: 2%">
+                            <thead>
+                                <tr>
+                                    <th *ngFor="let head of headElements2" scope="col">{{head}}</th>
+                                </tr>
+                            </thead>
+    <tbody>
+        <tr>
+            <td>{{nombre}}</td>
+            <td>{{precio}}</td>
+        </tr>
+    </tbody>
+    </div>
+    </div>
+    </ng-template>
+    </td>
+    <td>
+        <button class="btn btn-success" (click)="triggerModal(modalData)">Agregar items</button>
+        <ng-template #modalData let-modal>
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Agregar items a la Factura N°{{factura.id}}
+                </h4>
+                <button type="button" class="close btn btn-danger" aria-label="Close"
+                    (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">X</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container" style="margin-top: 5%">
+                    Nombre del item:
+                    <input type="text" class="form-control" placeholder="Nombre del item" [(ngModel)]="nombre">
+                </div>
+                <div class="container" style="margin-top: 5%">
+                    precio:
+                    <input type="text" class="form-control" placeholder="Precio" [(ngModel)]="precio">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" (click)="modal.close(agregarItem())">Guardar</button>
+            </div>
+        </ng-template>
+    </td>
+    </tbody>
+</table>
+<p *ngIf="siExisten">No existen facturas agregadas</p>
